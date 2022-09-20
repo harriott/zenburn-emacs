@@ -175,7 +175,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(cursor ((t (:foreground ,zenburn-fg :background ,zenburn-fg+1))))
    `(widget-field ((t (:foreground ,zenburn-fg :background ,zenburn-bg+3))))
    `(escape-glyph ((t (:foreground ,zenburn-yellow :weight bold))))
-   `(fringe ((t (:foreground ,zenburn-fg :background ,zenburn-bg+1))))
+   `(fringe ((t (:foreground ,zenburn-bg-1 :background ,zenburn-bg+1))))
    `(header-line ((t (:foreground ,zenburn-yellow
                                   :background ,zenburn-bg-1
                                   :box (:line-width -1 :style released-button)
