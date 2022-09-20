@@ -1,4 +1,4 @@
-vim: fdl=1:
+vim: fdl=3:
 
 # zenburn-theme for Emacs
 
@@ -8,7 +8,7 @@ vim: fdl=1:
 My fork of the excellent [zenburn-emacs](https://github.com/bbatsov/zenburn-emacs), created just so that I can tweak basic coloring `fringe` to be dimmer.
 
 ### how
-The original theme uses `zenburn-fg`, which I change to `zenburn-bg-1`, which gives less obtrusive fringe marks.
+The original theme uses `zenburn-fg`
 ```
     ...
 ;;;;; basic coloring
@@ -22,6 +22,9 @@ The original theme uses `zenburn-fg`, which I change to `zenburn-bg-1`, which gi
     ("zenburn-bg-1"     . "#2B2B2B")
     ...
 ```
+I switch to `zenburn-bg-1`, which gives less obtrusive fringe marks.
+
+![unobtrusive screenshot](screenshots/psilocybin.jpg)
 
 ### install
 I symlink this repository to `~/.emacs.d/harriott-zenburn-emacs` then in my [init.el](https://github.com/harriott/misc/blob/master/Emacs/init.el) I have:
@@ -38,3 +41,4 @@ Copyright © 2010-2022 Bozhidar Batsov and
 
 Distributed under the GNU General Public License, version 3
 
+[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg
