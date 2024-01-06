@@ -45,7 +45,7 @@ I noticed that whenever I tweak my copy of the theme Emacs warns me that it cons
     git merge upstream/master -m 'merge message' # merges in the changes
     rg HEAD                                      # ripgrep for any conflicts
     in vim: /^<<<<<<< HEAD$\|^=======$\|^>>>>>>> upstream/master$
-    gic '2 commits behind'
+    gic '4 commits behind'
     git merge --abort                            # undo the merge
 
 ## License
