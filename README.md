@@ -1,4 +1,5 @@
 vim: fdl=3:
+$onGH/harriott-zenburn-emacs/README.md
 
 # zenburn-theme for Emacs
 
@@ -27,13 +28,25 @@ I switch to `zenburn-bg-1`, which gives less obtrusive fringe marks.
 ![unobtrusive screenshot](screenshots/psilocybin.jpg)
 
 ### install
-I symlink this repository to `~/.emacs.d/harriott-zenburn-emacs` then in my [init.el](https://github.com/harriott/misc/blob/master/Emacs/init.el) I have:
+I symlink this repository to `~/.emacs.d/harriott-zenburn-emacs` (in my [$OSAB/bs-symlinks/jo-2-whenWM-0.sh](https://github.com/harriott/OS-ArchBuilds/blob/master/bs-symlinks/jo-2-whenWM-0.sh)) then in my [$misc/CP/Emacs/init.el](https://github.com/harriott/misc/blob/master/Emacs/init.el) I have:
 ```lisp
 ; (use-package zenburn-theme)  ; gets the original
 (require 'zenburn-theme)  ; gets this version
   (load-theme 'zenburn t)
 ```
 I noticed that whenever I tweak my copy of the theme Emacs warns me that it considers "The local variables list in zenburn-theme.el contains values that may not be safe (*)." My workaround is to briefly switch back to the original theme.
+
+## merging from bbatsov upstream
+
+    git remote add upstream git@github.com:bbatsov/zenburn-emacs
+
+    git remote -v                                # check remote locations
+    git fetch upstream                           # grab the changed upstream
+    git merge upstream/master -m 'merge message' # merges in the changes
+    rg HEAD                                      # ripgrep for any conflicts
+    in vim: /^<<<<<<< HEAD$\|^=======$\|^>>>>>>> upstream/master$
+    gic '2 commits behind'
+    git merge --abort                            # undo the merge
 
 ## License
 Copyright © 2010-2022 Bozhidar Batsov and
