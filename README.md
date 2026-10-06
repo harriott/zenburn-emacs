@@ -9,8 +9,7 @@ vim: fdl=3:
 ## About
 My fork of the excellent [zenburn-emacs](https://github.com/bbatsov/zenburn-emacs), created just so that I can tweak basic coloring `fringe` to be dimmer.
 
-### how
-The original theme uses `zenburn-fg`
+### essential tweaks
 ```
     ...
 ;;;;; basic coloring
@@ -24,6 +23,7 @@ The original theme uses `zenburn-fg`
     ("zenburn-bg-1"     . "#2B2B2B")
     ...
 ```
+The original theme uses `zenburn-fg` in the definition of `fringe`.
 I switch to `zenburn-bg-1`, which gives less obtrusive fringe marks.
 
 ![unobtrusive screenshot](screenshots/psilocybin.jpg)
@@ -43,7 +43,7 @@ I noticed that whenever I tweak my copy of the theme Emacs warns me that it cons
 
     git remote -v                                # check remote locations
     git fetch upstream                           # grab the changed upstream
-    git merge upstream/master -m 'merge message' # merges in the changes
+    git merge upstream/master -m '60 commits'    # merges in the changes
     rg HEAD                                      # ripgrep for any conflicts
     in vim: /^<<<<<<< HEAD$\|^=======$\|^>>>>>>> upstream/master$
     gic '6 commits behind'

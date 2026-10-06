@@ -2,10 +2,90 @@
 
 ## master (unreleased)
 
+### Bug fixes
+
+* [#393](https://github.com/bbatsov/zenburn-emacs/pull/393): Make face text readable on its own background: `whitespace-indentation` and `whitespace-space-after-tab` were red on yellow at 1.95:1, and `show-paren-mismatch` red on a grey lift at 2.35:1.
+* [#393](https://github.com/bbatsov/zenburn-emacs/pull/393): Give `ediff-fine-diff-B` dark text, its background being the one light enough to need it.
+
+## 2.11.0 (2026-07-26)
+
 ### New features
 
-* Add `corfu` support.
+* [#388](https://github.com/bbatsov/zenburn-emacs/pull/388): Add face support for gptel.
+* [#387](https://github.com/bbatsov/zenburn-emacs/pull/387): Add face support for asciidoc-mode, vundo, easy-kill, clojure-mode, copilot, git-timemachine, haskell-mode, keycast, dictionary, mistty, erlang and inf-ruby.
+* [#387](https://github.com/bbatsov/zenburn-emacs/pull/387): Deepen cider coverage with the REPL, stacktrace and inline error faces, plus faces for the nREPL message log.
+
+## 2.10.0 (2026-06-01)
+
+### New features
+
+* Introduce a semantic color palette layered on top of the positional palette. Faces now reference meaning-based names like `zenburn-comment`, `zenburn-string`, `zenburn-keyword`, `zenburn-error`, and `zenburn-diff-added-bg` instead of `zenburn-green`, `zenburn-red`, etc. Users can remap meanings without touching the base palette via the new `zenburn-override-semantic-colors-alist` customization. Migrated so far: `font-lock`, basic `success`/`warning`, and the `diff` section (which also pulls the previously hardcoded diff backgrounds into named entries).
+* Style the built-in `error` face explicitly. A handful of faces (`eww-invalid-certificate`, `git-annex-dired-annexed-unavailable`, `realgud-bp-enabled-face`) already inherited from it but previously picked up stock Emacs's red rather than the Zenburn palette.
+* Add `completion-preview` support (Emacs 30+).
+* Add `next-error-message` (Emacs 28+) and `header-line-highlight` (Emacs 28+).
+* Add `read-multiple-choice-face`.
+* Extend `tab-line` coverage with `tab-line-tab-modified`, `tab-line-tab-special`, `tab-line-tab-inactive-alternate`, `tab-line-tab-group`, `tab-line-highlight`, and `tab-line-close-highlight`.
+* Extend `eglot` coverage with `eglot-mode-line`, `eglot-parameter-hint-face`, and `eglot-type-hint-face`.
+* Add `lsp-mode` and `lsp-ui` support.
+* Add `hl-todo` support.
+* Add `nerd-icons` support.
+* Add `helpful` support.
+* Add `wgrep` support.
+* Add `multiple-cursors` support.
+* Add `eldoc` support (`eldoc-highlight-function-argument`).
+* Add `pulse` support.
+* Add `treemacs` support.
+* Add `breadcrumb` support.
+* Add `denote` support.
+* Add `jinx` support.
+* Add `symbol-overlay` support.
+* Add `citar` support.
+* Add `corfu-popupinfo` face.
+* Add `flymake-end-of-line-diagnostics-face` and `flymake-{error,warning,note}-echo` faces.
+
+### Bug fixes
+
+* Fix three compilation faces that were theming the wrong symbol: `compilation-column-face`, `compilation-error-face`, and `compilation-warning-face` are defcustoms holding face names, not faces themselves, so the theme entries did nothing. Renamed to the real faces `compilation-column-number`, `compilation-error`, and `compilation-warning`.
+* Drop ten more dead `*-face` theme entries that were setting specs on defcustoms instead of faces (no behavioral effect): `compilation-face`, `compilation-info-face`, `compilation-line-face`, `compilation-message-face`, `compilation-enter-directory-face`, `compilation-leave-directory-face`, `grep-context-face`, `grep-error-face`, `grep-hit-face`, `grep-match-face`, and `hl-line-face`. Their real targets are either already themed under the correct name or generic faces (`shadow`, `underline`) we shouldn't override.
+
+### Changes
+
+* Drop face entries for 13 abandoned/superseded third-party packages: `ace-jump` (use `avy`), `context-coloring`, `dim-autoload`, `egg` (use `magit`), `guide-key` (use `which-key`), `highlight-symbol` (use `symbol-overlay`), `irfc`, `jabber-mode`, `linum-mode` (use built-in `display-line-numbers-mode`), `mew`, `nav`, `mumamo` (use `polymode`), `sx`. Also drop variable settings for `company-quickhelp` and `fci-rule-color` (use built-in `display-fill-column-indicator-mode`).
+* Replace the internal `z-variable-pitch` macro shim with a real `zenburn-variable-pitch` face that headings inherit from. `zenburn-use-variable-pitch` still toggles the default behavior (inherit `variable-pitch` vs `default`), and users can now also customize `zenburn-variable-pitch` directly via `M-x customize-face` for finer-grained control.
+* Promote `zenburn-use-variable-pitch`, `zenburn-scale-org-headlines`, and `zenburn-scale-outline-headlines` from plain `defvar`s to boolean `defcustom`s so they show up in `M-x customize-group RET zenburn-theme` and accept safe file-local values.
+* Drop the legacy `((class color) (min-colors 89))` display-class dance and the obsolete low-color terminal fallbacks (`:inverse-video`, swapped fg/bg, monochrome `:weight bold`) for `mode-line`, `region`, `diff-header`, `diff-file-header`, `hl-line`, `hl-line-face`, and `hl-sexp-face`. Modern terminals all qualify as full-color, so the branching no longer earns its keep.
+* Drop `zenburn-height-minus-1`, which has been defined but never referenced anywhere in the theme.
+* Route `adoc-comment-face`, `ledger-font-comment-face`, and `js2-jsdoc-type` through `:inherit` so they track customizations to `font-lock-comment-face` / `font-lock-doc-face`.
+* Expand `adoc-mode` support: cover all 37 faces, give title levels distinct per-level colors with optional scaling via `zenburn-scale-outline-headlines`, differentiate `adoc-meta-face` from `adoc-meta-hide-face`, and fix `adoc-emphasis-face` to render italic instead of bold.
+
+## 2.9.0 (2026-03-29)
+
+### New features
+
+* Add `corfu` support (with `corfu-annotations`, `corfu-deprecated`).
 * Add `window-tool-bar` support.
+* Add `consult` support.
+* Add `embark` support.
+* Add `forge` support.
+* Add `marginalia` support.
+* Add `smerge` support.
+* Add `transient` support.
+* Add `which-key` support.
+* Add `eglot` support.
+* Add missing modern Emacs faces: `font-lock-number-face`, `font-lock-operator-face`, `font-lock-bracket-face`, `font-lock-delimiter-face`, `font-lock-escape-face`, `font-lock-function-call-face`, `font-lock-property-name-face`, `font-lock-property-use-face`, `font-lock-variable-use-face` (Emacs 29+), `mode-line-active`, `isearch-group-1`, `isearch-group-2`, `completions-group-title`, `completions-group-separator`, `completions-highlight`, `line-number-major-tick`, `line-number-minor-tick`, `tab-bar-tab-group-current`, `tab-bar-tab-group-inactive`, `tab-bar-tab-ungrouped`.
+* Expand `doom-modeline` support (from 2 to 50 faces).
+* Expand `vertico` support (add `vertico-multiline`, `vertico-group-title`, `vertico-group-separator`).
+* Add GitHub Actions CI for byte-compilation and theme loading.
+
+### Bug fixes
+
+* Fix missing colon in `ediff-fine-diff-Ancestor` face `:weight` keyword.
+* Fix trailing colon in `ledger-font-pending-face` face `:weight` keyword.
+* Fix duplicate `corfu-bar` definition (second one is now `corfu-border`).
+* Fix duplicate `:weight bold` in `org-done`, `org-tag`, `org-todo`, and `org-warning`.
+* Replace `hover-highlight` inherit (from niche `hl-line+` package) with direct styling in `erc-highlight-face` and `lui-button-face`.
+* Fix spurious quotes in `ruler-mode` face `:inherit` values.
+* Fix typo in README and upgrade URLs to HTTPS.
 
 ## 2.8 (2023-03-15)
 
