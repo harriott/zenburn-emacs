@@ -9,7 +9,7 @@ vim: fdl=3:
 ## About
 My fork of the excellent [zenburn-emacs](https://github.com/bbatsov/zenburn-emacs), created just so that I can tweak basic coloring `fringe` to be dimmer.
 
-### essential tweaks
+### tweak fringe
 ```
     ...
 ;;;;; basic coloring
@@ -46,7 +46,7 @@ I noticed that whenever I tweak my copy of the theme Emacs warns me that it cons
     git merge upstream/master -m '60 commits'    # merges in the changes
     rg HEAD                                      # ripgrep for any conflicts
     in vim: /^<<<<<<< HEAD$\|^=======$\|^>>>>>>> upstream/master$
-    gic '6 commits behind'
+    gic '60 commits behind'
     git merge --abort                            # undo the merge
 
 ## License
